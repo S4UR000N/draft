@@ -4,6 +4,7 @@ import { makeAutoObservable } from "mobx"
 /* Store start */
 export default class RootStore {
     constructor() {
+        this.rootObject = {};
         makeAutoObservable(this,
             {},
             { autoBind: true }
@@ -11,17 +12,21 @@ export default class RootStore {
         console.log("RootStore instantiated");
     };
 
+    get getRoot() {
+        return this.rootObject;
+    };
     /**
-    * Returns new instance of a class with reference to some other class
+    * Creates a new class and adds it to the rootObject
+    * Returns true/false depending on whether accessing same class returns true or false
     *
+    * @param {string} key to access myClass inside a RootStore -> rootObject
     * @param {class} myClass
-    * @param {object} defaultRootStore can accept any object
-    * @return {object} instance of myClass
+    * @return {boolean} boolean
     */
-    createNewInstance(myClass, defaultRootStore = this) {
-        let instance = new myClass(defaultRootStore);
-        return instance;
-    }
+    createNewInstance(key, myClass) {
+        this.rootObject[key] = new myClass(this);
+        return !!this.rootObject[key];
+    };
 };
 /* Store end */
 

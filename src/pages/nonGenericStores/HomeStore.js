@@ -3,4 +3,8 @@ export default class HomeStore {
         this.rootStore = rootStore;
         console.log("HomeStore instantiated");
     };
+
+    helloWorld() {
+        console.log("hello world");
+    };
 };

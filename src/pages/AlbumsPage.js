@@ -4,7 +4,7 @@ import AlbumsStore from "./nonGenericStores/AlbumsStore"
 
 export default function AlbumsPage() {
     let rootStore = useRootStore();
-    let albumsStore = rootStore.createNewInstance(AlbumsStore);
+    rootStore.createNewInstance("albumsStore", AlbumsStore);
 
     return (
         <div>ALBUMS PAGE</div>

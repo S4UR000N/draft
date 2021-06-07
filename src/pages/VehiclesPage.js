@@ -4,7 +4,7 @@ import VehiclesStore from "./nonGenericStores/VehiclesStore"
 
 export default function VehiclesPage() {
     let rootStore = useRootStore();
-    let vehiclesStore = rootStore.createNewInstance(VehiclesStore);
+    rootStore.createNewInstance("vehiclesStore", VehiclesStore);
 
     return (
         <div>VEHICLES PAGE</div>
